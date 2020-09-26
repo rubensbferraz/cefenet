@@ -23,7 +23,7 @@ class ClassRoutes{
         );
 
         if(array_key_exists($I, $this->Rota)){
-            if(file_exists(DIRREQ."app/controller/{$this->Rota[$I]}.php")){
+            if(file_exists(DIRREQ."app/Controller/{$this->Rota[$I]}.php")){
                 return $this->Rota[$I];
             }else{
                 return "ControllerHome";
@@ -34,5 +34,3 @@ class ClassRoutes{
    } 
 
 }
-
-?>
