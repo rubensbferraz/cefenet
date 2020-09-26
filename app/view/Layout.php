@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -13,13 +13,8 @@
 </head>
 
 <body>
-    <div class="Nav">
-        <a href="<?php echo DIRPAGE; ?>">Home</a>
-        <a href="<?php echo DIRPAGE . 'contato'; ?>">Contato</a>
-        <a href="<?php echo DIRPAGE . 'cadastro'; ?>">Cadastro</a>
-    </div>
+    <!-- inclui o cabeçalho do site -->
     <div class="Header">
-        <img src="<?php echo DIRIMG . 'My Post.png'; ?>" alt="Banner" srcset=""><br>
         <?php
         $BreadCrumb = new Src\Classes\ClassBreadcrumb();
         $BreadCrumb->addBreadcrumb();
@@ -29,9 +24,11 @@
         Tel,.:(XX) XXXX-XXXX <br>
         <?php echo $this->addHeader(); ?>
     </div>
+    <!-- inclui o corpo do site -->
     <div class="container">
         <div class="Main"><?php echo $this->addMain(); ?></div>
     </div>
+    <!-- inclui o Rodapé do site -->
     <div class="Footer">
         2019 - Todos os direitos reservados webdesigner em foco. <br>
         <?php echo $this->addFooter(); ?>
