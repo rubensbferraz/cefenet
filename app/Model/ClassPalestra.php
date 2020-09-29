@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Palestra;
+namespace App\Model;
 
 use App\Model\ClassConexao;
 
@@ -11,14 +11,15 @@ class ClassPalestra extends ClassConexao
     #Cadastrara os Administrador no sistema
     protected function cadastroPalestra($dataPalestra, $oradorPalestra, $temaPalestra, $diretorPalestra, $semanaPalestra)
     {
-        $idPalestra = 0;
-        $this->Db = $this->conexaoDB()->prepare("INSERT INTO tb_palestra VALUES(dataPalestra, oradorPalestra, temaPalestra, diretorPalestra, semanaPalestra)");
-        $this->Db->bindParam("idPalestra", $idPalestra, \PDO::PARAM_INT);
-        $this->Db->bindParam("dataPalestra", $dataPalestra, \PDO::PARAM_STR);
-        $this->Db->bindParam("oradorPalestra", $oradorPalestra, \PDO::PARAM_STR);
-        $this->Db->bindParam("temaPalestra", $temaPalestra, \PDO::PARAM_STR);
-        $this->Db->bindParam("diretorPalestra", $diretorPalestra, \PDO::PARAM_STR);
-        $this->Db->bindParam("semanaPalestra", $semanaPalestra, \PDO::PARAM_STR);
+        $idP = 0;
+        $dataP = date("Y-m-d", strtotime($dataPalestra));
+        $this->Db = $this->conexaoDB()->prepare("INSERT INTO tb_palestra VALUES(:idPalestra, :dataPalestra, :oradorPalestra, :temaPalestra, :diretorPalestra, :semanaPalestra)");
+        $this->Db->bindParam(":idPalestra", $idP, \PDO::PARAM_INT);
+        $this->Db->bindParam(":dataPalestra", $dataP, \PDO::PARAM_STR);
+        $this->Db->bindParam(":oradorPalestra", $oradorPalestra, \PDO::PARAM_STR);
+        $this->Db->bindParam(":temaPalestra", $temaPalestra, \PDO::PARAM_STR);
+        $this->Db->bindParam(":diretorPalestra", $diretorPalestra, \PDO::PARAM_STR);
+        $this->Db->bindParam(":semanaPalestra", $semanaPalestra, \PDO::PARAM_STR);
         $this->Db->execute();
     }
 
@@ -33,7 +34,7 @@ class ClassPalestra extends ClassConexao
 
         $PFetch = $this->Db = $this->conexaoDB()->prepare("SELECT FROM tb_palestra where dataPalestra like :dataPalestra, oradorPalestra like :oradorPalestra, temaPalestra like :temaPalestra, diretorPalestra like :diretorPalestra, semanaPalestra like :semanaPalestra)");
         $PFetch->bindParam(":idPalestra", $idPalestra, \PDO::PARAM_INT);
-        $PFetch->bindParam(":dataPalestra", $dataPalestra, \PDO::PARAM_STR);
+        $PFetch->bindParam(":dataPalestra", strtotime($dataPalestra), \PDO::PARAM_STR);
         $PFetch->bindParam(":oradorPalestra", $oradorPalestra, \PDO::PARAM_STR);
         $PFetch->bindParam(":temaPalestra", $temaPalestra, \PDO::PARAM_STR);
         $PFetch->bindParam(":diretorPalestra", $diretorPalestra, \PDO::PARAM_STR);
@@ -61,7 +62,7 @@ class ClassPalestra extends ClassConexao
     {
         $PFetch = $this->Db = $this->conexaoDB()->prepare("UPDATE tb_palestra SET dataPalestra =:dataPalestra, oradorPalestra =:oradorPalestra, temaPalestra =:temaPalestra, diretorPalestra =:diretorPalestra, semanaPalestra =:semanaPalestra WHERE idPalestra=:idPalestra)");
         $PFetch->bindParam(":idPalestra", $idPalestra, \PDO::PARAM_INT);
-        $PFetch->bindParam(":dataPalestra", $dataPalestra, \PDO::PARAM_STR);
+        $PFetch->bindParam(":dataPalestra", strtotime($dataPalestra), \PDO::PARAM_STR);
         $PFetch->bindParam(":oradorPalestra", $oradorPalestra, \PDO::PARAM_STR);
         $PFetch->bindParam(":temaPalestra", $temaPalestra, \PDO::PARAM_STR);
         $PFetch->bindParam(":diretorPalestra", $diretorPalestra, \PDO::PARAM_STR);

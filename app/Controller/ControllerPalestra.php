@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Model\Palestra\ClassPalestra;
+use App\Model\ClassPalestra;
 use Src\Classes\ClassRender;
 
 class ControllerPalestra extends ClassPalestra
@@ -51,7 +51,7 @@ class ControllerPalestra extends ClassPalestra
     public function cadastrar()
     {
         $this->recebeVariaveis();
-        var_dump($this->recebeVariaveis());
+        $this->recebeVariaveis();
         $this->cadastroPalestra($this->dataPalestra, $this->oradorPalestra, $this->temaPalestra, $this->diretorPalestra, $this->semanaPalestra);
     }
 }
