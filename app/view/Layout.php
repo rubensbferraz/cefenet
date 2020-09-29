@@ -8,20 +8,15 @@
     <meta name="description" content="<?php echo $this->getDescription(); ?>">
     <meta name="keywords" content="<?php echo $this->getKeywords(); ?>">
     <title><?php echo $this->getTitle(); ?></title>
-    <link rel="stylesheet" href="<?php echo DIRCSS . 'Styles.css' ?>">
-    <?php echo $this->addHead(); ?>
+    <link rel="stylesheet" href="<?php echo DIRCSS . 'bootstrap/bootstrap.min.css' ?>">
+    <link rel="stylesheet" href="<?php echo DIRCSS . 'cefe.css' ?>">
+    <link rel="stylesheet" href="<?php echo DIRCSS . 'carousel.css' ?>">
+    <link rel="stylesheet" href="<?php echo DIRCSS . 'menu.css' ?>">
 </head>
 
 <body>
     <!-- inclui o cabeçalho do site -->
     <div class="Header">
-        <?php
-        $BreadCrumb = new Src\Classes\ClassBreadcrumb();
-        $BreadCrumb->addBreadcrumb();
-        ?>
-        <br><br>
-        <hr>
-        Tel,.:(XX) XXXX-XXXX <br>
         <?php echo $this->addHeader(); ?>
     </div>
     <!-- inclui o corpo do site -->
@@ -30,11 +25,11 @@
     </div>
     <!-- inclui o Rodapé do site -->
     <div class="Footer">
-        2019 - Todos os direitos reservados webdesigner em foco. <br>
         <?php echo $this->addFooter(); ?>
     </div>
 
-
+    <script src="<?php echo DIRJS . 'Jquery/Jquery.js' ?>"></script>
+    <script src="<?php echo DIRJS . 'bootstrap/bootstrap.min.js' ?>"></script>
 </body>
 
 </html>

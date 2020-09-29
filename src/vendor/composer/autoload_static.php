@@ -11,6 +11,10 @@ class ComposerStaticInit9a5ad57699b9b65245a832a37b0ad6cf
         array (
             'Src\\' => 4,
         ),
+        'P' => 
+        array (
+            'Public\\' => 7,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -21,6 +25,10 @@ class ComposerStaticInit9a5ad57699b9b65245a832a37b0ad6cf
         'Src\\' => 
         array (
             0 => __DIR__ . '/../..' . '/',
+        ),
+        'Public\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/../public',
         ),
         'App\\' => 
         array (

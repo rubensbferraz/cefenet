@@ -6,7 +6,6 @@ use Src\Classes\ClassRoutes;
 
 class Dispatch extends ClassRoutes
 {
-
     #Atribudos
     private $Method;
     private $Param = [];
