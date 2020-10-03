@@ -28,6 +28,7 @@
         <?php echo $this->addFooter(); ?>
     </div>
 
+    <script src="<?php echo DIRJS . 'Javascript.js' ?>"></script>
     <script src="<?php echo DIRJS . 'Jquery/Jquery.js' ?>"></script>
     <script src="<?php echo DIRJS . 'bootstrap/bootstrap.min.js' ?>"></script>
 </body>

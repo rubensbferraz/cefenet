@@ -51,7 +51,14 @@ class ControllerPalestra extends ClassPalestra
     public function cadastrar()
     {
         $this->recebeVariaveis();
-        $this->recebeVariaveis();
         $this->cadastroPalestra($this->dataPalestra, $this->oradorPalestra, $this->temaPalestra, $this->diretorPalestra, $this->semanaPalestra);
+        header("Location: " . DIRPAGE . "palestra", 3000);
+        echo ("Alteração realizada com sucesso...");
+    }
+
+    public function seleciona()
+    {
+        $this->recebeVariaveis();
+        $this->selecionaPalestra($this->dataPalestra, $this->oradorPalestra, $this->temaPalestra, $this->diretorPalestra, $this->semanaPalestra);
     }
 }

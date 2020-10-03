@@ -26,19 +26,19 @@ class ClassPalestra extends ClassConexao
     #Seleciona os dados cadastrados no banco de dados
     protected function selecionaPalestra($dataPalestra, $oradorPalestra, $temaPalestra, $diretorPalestra, $semanaPalestra)
     {
-        $dataPalestra = '%' . $dataPalestra . '%';
+        $dataPP = date("Y-m-d", strtotime($dataPalestra));
+        $dataPP = '%' . $dataPP . '%';
         $oradorPalestra = '%' . $oradorPalestra . '%';
         $temaPalestra = '%' . $temaPalestra . '%';
         $diretorPalestra = '%' . $diretorPalestra . '%';
         $semanaPalestra = '%' . $semanaPalestra . '%';
 
-        $PFetch = $this->Db = $this->conexaoDB()->prepare("SELECT FROM tb_palestra where dataPalestra like :dataPalestra, oradorPalestra like :oradorPalestra, temaPalestra like :temaPalestra, diretorPalestra like :diretorPalestra, semanaPalestra like :semanaPalestra)");
-        $PFetch->bindParam(":idPalestra", $idPalestra, \PDO::PARAM_INT);
-        $PFetch->bindParam(":dataPalestra", strtotime($dataPalestra), \PDO::PARAM_STR);
-        $PFetch->bindParam(":oradorPalestra", $oradorPalestra, \PDO::PARAM_STR);
-        $PFetch->bindParam(":temaPalestra", $temaPalestra, \PDO::PARAM_STR);
-        $PFetch->bindParam(":diretorPalestra", $diretorPalestra, \PDO::PARAM_STR);
-        $PFetch->bindParam(":semanaPalestra", $semanaPalestra, \PDO::PARAM_STR);
+        $PFetch = $this->Db = $this->conexaoDB()->prepare("SELECT FROM tb_palestra where dataPalestra like :DataPalestra, oradorPalestra like :OradorPalestra, temaPalestra like :TemaPalestra, diretorPalestra like :DiretorPalestra, semanaPalestra like :SemanaPalestra)");
+        $PFetch->bindParam("dataPalestra", $dataPP, \PDO::PARAM_STR);
+        $PFetch->bindParam("oradorPalestra", $oradorPalestra, \PDO::PARAM_STR);
+        $PFetch->bindParam("temaPalestra", $temaPalestra, \PDO::PARAM_STR);
+        $PFetch->bindParam("diretorPalestra", $diretorPalestra, \PDO::PARAM_STR);
+        $PFetch->bindParam("semanaPalestra", $semanaPalestra, \PDO::PARAM_STR);
         $PFetch->execute();
 
         $I = 0;
