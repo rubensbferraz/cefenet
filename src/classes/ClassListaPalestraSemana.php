@@ -8,60 +8,94 @@ class ClassListaPalestraSemana extends ClassPalestra
 {
     public function listaPalestraSexta()
     {
+        $mesPal = date('m');
         include("diaNaSemana.php");
-        $PSFetch = $this->Db = $this->conexaoDB()->prepare("SELECT dataPalestra, oradorPalestra, temaPalestra, diretorPalestra, semanaPalestra FROM tb_palestra where semanaPalestra='sexta'");
-        $PSFetch->bindParam('dataPalestra', $dataPalestra, \PDO::PARAM_STR);
+        $PSFetch = $this->Db = $this->conexaoDB()->prepare("SELECT DATE_FORMAT(dataPalestra, '%d-%m-%Y') as DataPalestra, oradorPalestra, temaPalestra, diretorPalestra, semanaPalestra FROM tb_palestra where mesPalestra=$mesPal and semanaPalestra='sexta' order by DataPalestra ASC");
+        $PSFetch->bindParam('DataPalestra', $dataPalestra, \PDO::PARAM_STR);
         $PSFetch->bindParam('oradorPalestra', $oradorPalestra, \PDO::PARAM_STR);
         $PSFetch->bindParam('temaPalestra', $temaPalestra, \PDO::PARAM_STR);
         $PSFetch->bindParam('diretorPalestra', $diretorPalestra, \PDO::PARAM_STR);
         $PSFetch->bindParam('semanaPalestra', $semanaPalestra, \PDO::PARAM_STR);
         $PSFetch->execute();
 
-        foreach ($PSFetch as $sex) {
-            $DataPalestra = explode("-", $sex['dataPalestra']); //$diaPalestra[2] = captura os dia de minhas 
-            $diaPalestra = $DataPalestra[2];
-            $mesPalestra = $DataPalestra[1];
+        foreach ($PSFetch as $S) {
+            $DPalestra = explode("-", $S['DataPalestra']); //$diaPalestra[2] = captura os dia de minhas
+            $arraydiaP = $DPalestra;
+            $teste = array($arraydiaP[0]);
+            $n_arraydiaP = count($arraydiaP);
+            $encontrado = '';
+            for ($i = 0; $i < $n_arraydiaP; $i++) {
+                if ($arraydiaP[$i] == $diaS_1 or $arraydiaP[$i] == $diaS_2 or $arraydiaP[$i] == $diaS_3 or $arraydiaP[$i] == $diaS_4 or $arraydiaP[$i] == $diaS_5 or $arraydiaP[$i] == $diaS_6 or $arraydiaP[$i] == $diaS_7) {
+                    $encontrado = $i == 0 ? $arraydiaP[$i] : $arraydiaP[$i - 1];
 
-            if ($mesPalestra === $msSistema) {
-                if ($diaS_1 == $diaPalestra or $diaS_2 == $diaPalestra or $diaS_3 == $diaPalestra or $diaS_4 == $diaPalestra or $diaS_5 == $diaPalestra or $diaS_6 == $diaPalestra or $diaS_7 == $diaPalestra) {
-                    echo "
-                <div class='sexta border border-success p-2 rounded'>
-                <p class='sem text-uppercase'>" . $sex['semanaPalestra'] . "/ Dia:&nbsp &nbsp " . $diaPalestra . "</p>
-                <p Slass='ortD'>Orador: " . $sex['oradorPalestra'] . "</p>
-                <p class='ortD'>Tema: " . $sex['temaPalestra'] . "</p>
-                </div>
-                ";
+                    if (min($teste)) {
+                        echo "
+                        <div class='sexta border border-success p-2 rounded'>
+                        <p class='sem text-uppercase'>" . $S['semanaPalestra'] . "/ Dia:&nbsp &nbsp " . $encontrado . "</p>
+                        <p Slass='ortD'>Orador: " . $S['oradorPalestra'] . "</p>
+                        <p class='ortD'>Tema: " . $S['temaPalestra'] . "</p>
+                        </div>
+                                ";
+                        break;
+                    } else {
+                        echo "
+                            <div class='sexta border border-success p-2 rounded'>
+                            <p class='sem text-uppercase'> Não Informado / Dia:&nbsp &nbsp " . $encontrado . "</p>
+                            <p Slass='ortD'>Orador: Não Informado </p>
+                            <p class='ortD'>Tema: Não Informado </p>
+                            </div>
+                            ";
+                        break;
+                    }
                 }
+                break;
             }
-        }
+        } //fim fo foreach
     }
-
     public function listaPalestraDomingo()
     {
+        $mesPal = date('m');
         include("diaNaSemana.php");
-        $PDFetch = $this->Db = $this->conexaoDB()->prepare("SELECT dataPalestra, oradorPalestra, temaPalestra, diretorPalestra, semanaPalestra FROM tb_palestra where semanaPalestra='domingo'");
-        $PDFetch->bindParam('dataPalestra', $dataPalestra, \PDO::PARAM_STR);
-        $PDFetch->bindParam('oradorPalestra', $oradorPalestra, \PDO::PARAM_STR);
-        $PDFetch->bindParam('temaPalestra', $temaPalestra, \PDO::PARAM_STR);
-        $PDFetch->bindParam('diretorPalestra', $diretorPalestra, \PDO::PARAM_STR);
-        $PDFetch->bindParam('semanaPalestra', $semanaPalestra, \PDO::PARAM_STR);
-        $PDFetch->execute();
+        $PSFetch = $this->Db = $this->conexaoDB()->prepare("SELECT DATE_FORMAT(dataPalestra, '%d-%m-%Y') as DataPalestra, oradorPalestra, temaPalestra, diretorPalestra, semanaPalestra FROM tb_palestra where mesPalestra=$mesPal and semanaPalestra='domingo' order by DataPalestra ASC");
+        $PSFetch->bindParam('DataPalestra', $dataPalestra, \PDO::PARAM_STR);
+        $PSFetch->bindParam('oradorPalestra', $oradorPalestra, \PDO::PARAM_STR);
+        $PSFetch->bindParam('temaPalestra', $temaPalestra, \PDO::PARAM_STR);
+        $PSFetch->bindParam('diretorPalestra', $diretorPalestra, \PDO::PARAM_STR);
+        $PSFetch->bindParam('semanaPalestra', $semanaPalestra, \PDO::PARAM_STR);
+        $PSFetch->execute();
 
-        foreach ($PDFetch as $D) {
-            $DataPalestra = explode("-", $D['dataPalestra']); //$diaPalestra[2] = captura os dia de minhas 
-            $diaPalestra = $DataPalestra[2];
-            $mesPalestra = $DataPalestra[1];
-            if ($mesPalestra === $msSistema) {
-                if ($diaS_1 == $diaPalestra or $diaS_2 == $diaPalestra or $diaS_3 == $diaPalestra or $diaS_4 == $diaPalestra or $diaS_5 == $diaPalestra or $diaS_6 == $diaPalestra or $diaS_7 == $diaPalestra) {
-                    echo "
-                <div class='sexta border border-success p-2 rounded'>
-                <p class='sem text-uppercase'>" . $D['semanaPalestra'] . "/ Dia:&nbsp &nbsp " . $diaPalestra . "</p>
-                <p class='ortD'>Orador: " . $D['oradorPalestra'] . "</p>
-                <p class='ortD'>Tema: " . $D['temaPalestra'] . "</p>
-                </div>
-                ";
+        foreach ($PSFetch as $S) {
+            $DPalestra = explode("-", $S['DataPalestra']); //$diaPalestra[2] = captura os dia de minhas
+            $arraydiaP = $DPalestra;
+            $teste = array($arraydiaP[0]);
+            $n_arraydiaP = count($arraydiaP);
+            $encontrado = '';
+            for ($i = 0; $i < $n_arraydiaP; $i++) {
+                if ($arraydiaP[$i] == $diaS_1 or $arraydiaP[$i] == $diaS_2 or $arraydiaP[$i] == $diaS_3 or $arraydiaP[$i] == $diaS_4 or $arraydiaP[$i] == $diaS_5 or $arraydiaP[$i] == $diaS_6 or $arraydiaP[$i] == $diaS_7) {
+                    $encontrado = $i == 0 ? $arraydiaP[$i] : $arraydiaP[$i - 1];
+
+                    if (min($teste)) {
+                        echo "
+                        <div class='sexta border border-success p-2 rounded'>
+                        <p class='sem text-uppercase'>" . $S['semanaPalestra'] . "/ Dia:&nbsp &nbsp " . $encontrado . "</p>
+                        <p Slass='ortD'>Orador: " . $S['oradorPalestra'] . "</p>
+                        <p class='ortD'>Tema: " . $S['temaPalestra'] . "</p>
+                        </div>
+                                ";
+                        break;
+                    } else {
+                        echo "
+                            <div class='sexta border border-success p-2 rounded'>
+                            <p class='sem text-uppercase'> Não Informado / Dia:&nbsp &nbsp " . $encontrado . "</p>
+                            <p Slass='ortD'>Orador: Não Informado </p>
+                            <p class='ortD'>Tema: Não Informado </p>
+                            </div>
+                            ";
+                        break;
+                    }
                 }
+                break;
             }
-        }
+        } //fim fo foreach
     }
 }
