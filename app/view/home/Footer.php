@@ -12,6 +12,6 @@
 <hr>
 <div class="row col-md col-sm">
     <div class="col">
-        <h6 class="text-center">Avenida Vila Buritis IV Quadra 26 lotes 8/11, Planaltina-DF</h6>
+        <h6 class="text-center">Vila Buritis IV Quadra 26 lotes 8/11, Planaltina-DF</h6>
     </div>
 </div>
