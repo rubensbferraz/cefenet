@@ -9,8 +9,6 @@ $anoSistema = date("Y", strtotime($mes_pesq)); //captura o ano do sistema
 $NumS = date('w', strtotime(strtotime($diaSistema)));
 //var_dump($msSistema);
 //------------------------------+
-$num = 7;
-
 $diaS_1 = date('d-m-Y', strtotime("+1 days")); //echo $diaS_1;
 $diaS_2 = date('d-m-Y', strtotime("+2 days")); //echo $diaS_2;
 $diaS_3 = date('d-m-Y', strtotime("+3 days")); //echo $diaS_3;
@@ -19,8 +17,17 @@ $diaS_5 = date('d-m-Y', strtotime("+5 days")); //echo $diaS_5;
 $diaS_6 = date('d-m-Y', strtotime("+6 days")); //echo $diaS_6;
 $diaS_7 = date('d-m-Y', strtotime("+7 days")); //echo $diaS_7;
 
-$arrayDias = [$diaS_1, $diaS_2, $diaS_3, $diaS_4, $diaS_5, $diaS_6, $diaS_7];
-//var_dump($arrayDias);
+$array7datas = [$diaS_1, $diaS_2, $diaS_3, $diaS_4, $diaS_5, $diaS_6, $diaS_7];
+
+$dia_1 = date('d', strtotime("+1 days")); //echo $dia_1;
+$dia_2 = date('d', strtotime("+2 days")); //echo $dia_2;
+$dia_3 = date('d', strtotime("+3 days")); //echo $dia_3;
+$dia_4 = date('d', strtotime("+4 days")); //echo $dia_4;
+$dia_5 = date('d', strtotime("+5 days")); //echo $dia_5;
+$dia_6 = date('d', strtotime("+6 days")); //echo $dia_6;
+$dia_7 = date('d', strtotime("+7 days")); //echo $dia_7;
+
+$array7dias = [$dia_1, $dia_2, $dia_3, $dia_4, $dia_5, $dia_6, $dia_7];
 
 //numero da semana corrente do sistema
 $inicio = new DateTime($P_dia);
