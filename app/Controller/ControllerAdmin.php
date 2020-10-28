@@ -17,8 +17,12 @@ class ControllerAdmin extends ClassRender implements InterfaceView
         $this->renderLayout();
     }
 
-    public function admin()
+    public function loginsuccessfully()
     {
-        echo "Você esta na pagina do Admin!!";
+        echo "setTimeout(.window.location='painel.php', 3000)";
+    }
+    public function altenticacao()
+    {
+        echo 'ação para altenticação';
     }
 }
