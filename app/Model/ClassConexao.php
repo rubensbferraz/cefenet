@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-abstract class ClassConexao
+class ClassConexao
 {
 
     public function conexaoDB()

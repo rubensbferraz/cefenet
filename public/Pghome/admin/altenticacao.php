@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-include("App/Model/ClassConexao.php");
+$altendica = new \App\Model\ClassConexao();
 ?>
 
 <head>
@@ -28,9 +28,12 @@ include("App/Model/ClassConexao.php");
 	$nome = $_POST['nomeAdm'];
 	$senha = $_POST['senhaAdm'];
 
-	$sql = mysqli_query($conn, "SELECT * FROM adm WHERE nomeAdm = '$nome' and senhaAdm='$senha'");
-	$row = mysqli_num_rows($sql);
+	$sql = $this->altendica->conexaoDB()->prepare("SELECT * FROM adm WHERE nomeAdm = '$nome' and senhaAdm='$senha'");
+	$this->altendica->bindParam(":nomeAdm", $nome, \PDO::PARAM_STR);
+	$this->altendica->bindParam(":senhaAdm", $senha, \PDO::PARAM_STR);
+	$this->altendica->execute();
 
+	$row = $sql->rowCount();
 
 	if ($row > 0) {
 		session_start();

@@ -23,6 +23,6 @@ class ControllerAdmin extends ClassRender implements InterfaceView
     }
     public function altenticacao()
     {
-        echo 'ação para altenticação';
+        include("../../public/Pghome/admin/altenticacao.php");
     }
 }
