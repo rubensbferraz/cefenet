@@ -14,87 +14,106 @@ class ClassDiaSemana extends ClassConexao
 
     public function addDiaDomingo()
     {
-        $PDFetch = $this->Db = $this->conexaoDB()->prepare("SELECT DATE_FORMAT(dataPalestra, '%d-%m-%Y') as DataPalestra, oradorPalestra, temaPalestra, diretorPalestra, semanaPalestra FROM tb_palestra where semanaPalestra='domingo' order by DataPalestra ASC");
+        $diaS_1 = date('d-m-Y', strtotime("+1 days")); //echo $diaS_1;
+        $diaS_2 = date('d-m-Y', strtotime("+2 days")); //echo $diaS_2;
+        $diaS_3 = date('d-m-Y', strtotime("+3 days")); //echo $diaS_3;
+        $diaS_4 = date('d-m-Y', strtotime("+4 days")); //echo $diaS_4;
+        $diaS_5 = date('d-m-Y', strtotime("+5 days")); //echo $diaS_5;
+        $diaS_6 = date('d-m-Y', strtotime("+6 days")); //echo $diaS_6;
+        $diaS_7 = date('d-m-Y', strtotime("+7 days")); //echo $diaS_7;
+
+        $array7datas = [$diaS_1, $diaS_2, $diaS_3, $diaS_4, $diaS_5, $diaS_6, $diaS_7];
+        $mesAtual = date('m');
+        $PDFetch = $this->Db = $this->conexaoDB()->prepare("SELECT DATE_FORMAT(dataPalestra, '%d-%m-%Y') as DataPalestra FROM tb_palestra where semanaPalestra='domingo' and mesPalestra=$mesAtual ");
         $PDFetch->bindParam('DataPalestra', $dataPalestra, \PDO::PARAM_STR);
         $PDFetch->execute();
-        foreach ($PDFetch as $dom) {
+        foreach ($PDFetch as $Dom) {
+            $arrayDom = [$Dom['DataPalestra']];
+            $arrayDatasPDom = explode('-', $arrayDom[0]);
+        }
+        $P_dia = date($arrayDatasPDom[0] . '-m-Y'); // pegar as sextas feiras a partir da base de dados
+        $U_dia = date('t-m-Y');
+        //numero da semana corrente do sistema
+        $inicio = new DateTime($P_dia);
+        $interval = new DateInterval('P7D');
+        $fim = new DateTime($U_dia);
+        $recurrences = 4;
+        // All of these periods are equivalent.
+        $period = new DatePeriod($inicio, $interval, $recurrences);
+        $period = new DatePeriod($inicio, $interval, $fim);
 
-            $geralDom = [$dom];
-            $arrayDom = [$dom['DataPalestra']];
-            $arrayOrador = [$dom['oradorPalestra']];
-            $arrayTema = [$dom['temaPalestra']];
-            $P_dia = date('Y-m-' . $arrayDom[0]);
-            $U_dia = date('Y-m-t');
-            //numero da semana corrente do sistema
-            $inicio = new DateTime($P_dia);
-            $interval = new DateInterval('P7D');
-            $fim = new DateTime($U_dia);
-            $recurrences = 5;
-            // All of these periods are equivalent.
-            $period = new DatePeriod($inicio, $interval, $recurrences);
-            $period = new DatePeriod($inicio, $interval, $fim);
+        foreach ($period as $date) {
+            $diaPDom = $date->format('d-m-Y');
 
-            foreach ($period as $date) {
-                $teste = $date->format('d');
-                //var_dump($teste);
-            }
-            $geral = [$geralDom[0]];
+            $PD2Fetch = $this->Db = $this->conexaoDB()->prepare("SELECT DATE_FORMAT(dataPalestra, '%d-%m-%Y') as DataPalestra, oradorPalestra, temaPalestra, diretorPalestra, semanaPalestra FROM tb_palestra where semanaPalestra='domingo' order by DataPalestra");
+            $PD2Fetch->bindParam('DataPalestra', $dataPalestra, \PDO::PARAM_STR);
+            $PD2Fetch->execute();
 
-            array_filter($geral, function ($k) {
-                $diaDomingo =  $k[0] >= date('d');
-                if ($diaDomingo == true) {
+            foreach ($PD2Fetch as $Dom2) {
+                $geralDom = $Dom2;
+                while (in_array($geralDom[0], $array7datas)) {
                     echo "
-                    <div class='sexta border border-success p-2 rounded'>
-                    <p class='sem text-uppercase'> Domingo/ Dia:&nbsp &nbsp " . $k[0] . "</p>
-                    <p Slass='ortD'>Orador: " . $k[1] . "</p>
-                    <p class='ortD'>Tema: " . $k[2] . "</p>
-                    </div>
-                            ";
+                        <div class='Domingo border border-success p-2 rounded'>
+                        <p class='sem text-uppercase'> Domingo/ Dia:&nbsp &nbsp " . $geralDom[0] . "</p>
+                        <p Slass='ortD'>Orador: " . $geralDom[1] . "</p>
+                        <p class='ortD'>Tema: " . $geralDom[2] . "</p>
+                        </div>
+                                ";
+                    break;
                 }
-            }, ARRAY_FILTER_USE_BOTH);
+            }
         }
     }
     public function addDiaSexta()
     {
-        $PSFetch = $this->Db = $this->conexaoDB()->prepare("SELECT DATE_FORMAT(dataPalestra, '%d-%m-%Y') as DataPalestra, oradorPalestra, temaPalestra, diretorPalestra, semanaPalestra FROM tb_palestra where semanaPalestra='sexta' order by DataPalestra ASC");
+        $diaS_1 = date('d-m-Y', strtotime("+1 days")); //echo $diaS_1;
+        $diaS_2 = date('d-m-Y', strtotime("+2 days")); //echo $diaS_2;
+        $diaS_3 = date('d-m-Y', strtotime("+3 days")); //echo $diaS_3;
+        $diaS_4 = date('d-m-Y', strtotime("+4 days")); //echo $diaS_4;
+        $diaS_5 = date('d-m-Y', strtotime("+5 days")); //echo $diaS_5;
+        $diaS_6 = date('d-m-Y', strtotime("+6 days")); //echo $diaS_6;
+        $diaS_7 = date('d-m-Y', strtotime("+7 days")); //echo $diaS_7;
+
+        $array7datas = [$diaS_1, $diaS_2, $diaS_3, $diaS_4, $diaS_5, $diaS_6, $diaS_7];
+        $mesAtual = date('m');
+        $PSFetch = $this->Db = $this->conexaoDB()->prepare("SELECT DATE_FORMAT(dataPalestra, '%d-%m-%Y') as DataPalestra FROM tb_palestra where semanaPalestra='sexta' and mesPalestra=$mesAtual ");
         $PSFetch->bindParam('DataPalestra', $dataPalestra, \PDO::PARAM_STR);
         $PSFetch->execute();
         foreach ($PSFetch as $Sex) {
-
-            $geralSex = [$Sex];
             $arraySex = [$Sex['DataPalestra']];
-            $arrayOrador = [$Sex['oradorPalestra']];
-            $arrayTema = [$Sex['temaPalestra']];
-            $P_dia = date('Y-m-' . $arraySex[0]);
-            $U_dia = date('Y-m-t');
-            //numero da semana corrente do sistema
-            $inicio = new DateTime($P_dia);
-            $interval = new DateInterval('P7D');
-            $fim = new DateTime($U_dia);
-            $recurrences = 5;
-            // All of these periods are equivalent.
-            $period = new DatePeriod($inicio, $interval, $recurrences);
-            $period = new DatePeriod($inicio, $interval, $fim);
+            $arrayDatasPSex = explode('-', $arraySex[0]);
+        }
+        $P_dia = date($arrayDatasPSex[0] . '-m-Y'); // pegar as sextas feiras a partir da base de dados
+        $U_dia = date('t-m-Y');
+        //numero da semana corrente do sistema
+        $inicio = new DateTime($P_dia);
+        $interval = new DateInterval('P7D');
+        $fim = new DateTime($U_dia);
+        $recurrences = 4;
+        // All of these periods are equivalent.
+        $period = new DatePeriod($inicio, $interval, $recurrences);
+        $period = new DatePeriod($inicio, $interval, $fim);
 
-            foreach ($period as $date) {
-                $teste = $date->format('d');
-                //var_dump($teste);
-            }
-            $geral = [$geralSex[0]];
+        foreach ($period as $date) {
+            $diaPSex = $date->format('d-m-Y');
 
-            array_filter($geral, function ($k) {
-                $diaSexta =  $k[0] >= date('d');
-                if ($diaSexta == true) {
+            $PS2Fetch = $this->Db = $this->conexaoDB()->prepare("SELECT DATE_FORMAT(dataPalestra, '%d-%m-%Y') as DataPalestra, oradorPalestra, temaPalestra, diretorPalestra, semanaPalestra FROM tb_palestra where semanaPalestra='sexta' order by DataPalestra");
+            $PS2Fetch->bindParam('DataPalestra', $dataPalestra, \PDO::PARAM_STR);
+            $PS2Fetch->execute();
+
+            foreach ($PS2Fetch as $Sex2) {
+                $geralSex = $Sex2;
+                while (in_array($geralSex[0], $array7datas)) {
                     echo "
-                    <div class='sexta border border-success p-2 rounded'>
-                    <p class='sem text-uppercase'> Sexta/ Dia:&nbsp &nbsp " . $k[0] . "</p>
-                    <p Slass='ortD'>Orador: " . $k[1] . "</p>
-                    <p class='ortD'>Tema: " . $k[2] . "</p>
-                    </div>
-                            ";
+                        <div class='sexta border border-success p-2 rounded'>
+                        <p class='sem text-uppercase'> Sexta/ Dia:&nbsp &nbsp " . $geralSex[0] . "</p>
+                        <p Slass='ortD'>Orador: " . $geralSex[1] . "</p>
+                        <p class='ortD'>Tema: " . $geralSex[2] . "</p>
+                        </div>
+                                ";
+                    break;
                 }
-            }, ARRAY_FILTER_USE_BOTH);
-        } # code...
-
+            }
+        }
     }
 }

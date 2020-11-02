@@ -34,7 +34,7 @@ class ClassListaPalestraSemana extends ClassConexao
     {
         $dDom = new ClassDiaSemana();
         try {
-            if (isset($dom)) {
+            if (isset($dDom)) {
                 $dDom->addDiaDomingo();
             } else {
                 echo "
