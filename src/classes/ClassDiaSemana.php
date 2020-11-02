@@ -32,6 +32,7 @@ class ClassDiaSemana extends ClassConexao
             $arrayDatasPDom = explode('-', $arrayDom[0]);
         }
         $P_dia = date($arrayDatasPDom[0] . '-m-Y'); // pegar as sextas feiras a partir da base de dados
+
         $U_dia = date('t-m-Y');
         //numero da semana corrente do sistema
         $inicio = new DateTime($P_dia);
@@ -51,10 +52,11 @@ class ClassDiaSemana extends ClassConexao
 
             foreach ($PD2Fetch as $Dom2) {
                 $geralDom = $Dom2;
+                $arrayDtPDom = explode('-', $geralDom[0]);
                 while (in_array($geralDom[0], $array7datas)) {
                     echo "
                         <div class='Domingo border border-success p-2 rounded'>
-                        <p class='sem text-uppercase'> Domingo/ Dia:&nbsp &nbsp " . $geralDom[0] . "</p>
+                        <p class='sem text-uppercase'> Domingo/ Dia:&nbsp &nbsp " . $arrayDtPDom[0] . "</p>
                         <p Slass='ortD'>Orador: " . $geralDom[1] . "</p>
                         <p class='ortD'>Tema: " . $geralDom[2] . "</p>
                         </div>
@@ -103,10 +105,12 @@ class ClassDiaSemana extends ClassConexao
 
             foreach ($PS2Fetch as $Sex2) {
                 $geralSex = $Sex2;
+                $arrayDtPSex = explode('-', $geralSex[0]);
+
                 while (in_array($geralSex[0], $array7datas)) {
                     echo "
                         <div class='sexta border border-success p-2 rounded'>
-                        <p class='sem text-uppercase'> Sexta/ Dia:&nbsp &nbsp " . $geralSex[0] . "</p>
+                        <p class='sem text-uppercase'> Sexta/ Dia:&nbsp &nbsp " . $arrayDtPSex[0] . "</p>
                         <p Slass='ortD'>Orador: " . $geralSex[1] . "</p>
                         <p class='ortD'>Tema: " . $geralSex[2] . "</p>
                         </div>

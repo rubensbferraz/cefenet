@@ -19,3 +19,9 @@ define('HOST', "localhost");
 define('DB', "cefeemmanuel1");
 define('USER', "root");
 define('PASS', "crbf");
+
+//acesso ao banco de dados locaweb
+/*define('HOST', "187.45.196.186");
+define('DB', "cefeemmanue1");
+define('USER', "provacefe1");
+define('PASS', "@CRbf015174cefe");*/
