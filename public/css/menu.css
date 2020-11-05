@@ -19,7 +19,7 @@ nav.nav-item {
 .nav-link {
     display: block;
 }
-.navecavel, .breadcrumb {
+.breadcrumb {
     height: 46px;
     flex-wrap: wrap;
     font-size: larger;
@@ -27,4 +27,7 @@ nav.nav-item {
     list-style: none;
     border-radius: .25rem;
     background-image: linear-gradient(to right, #43C6AC , #F8FFAE);
+    z-index: 200;
 }
+
+/*.navecavel,*/

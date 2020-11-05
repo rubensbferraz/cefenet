@@ -60,6 +60,7 @@ class ClassMenu
                 </nav>
             </div>
         </div>
+
         ";
     }
 }

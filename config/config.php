@@ -12,6 +12,7 @@ if (substr($_SERVER['DOCUMENT_ROOT'], -1) == '/') {
 define('DIRIMG', DIRPAGE . "public/img/");
 define('DIRCSS', DIRPAGE . "public/css/");
 define('DIRJS', DIRPAGE . "public/js/");
+define('DIRADM', DIRPAGE . "public/admin/");
 define('DIRINC', DIRPAGE . "src/Includes/");
 
 //acesso ao banco de dados
