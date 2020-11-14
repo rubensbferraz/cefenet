@@ -19,6 +19,7 @@ class ClassRoutes
             "" => "ControllerHome",
             "home" => "ControllerHome",
             "admin" => "ControllerAdmin",
+            "login" => "ControllerLogin",
             "palestra" => "ControllerPalestra",
             "sitemap" => "ControllerSitemap"
 

@@ -4,7 +4,7 @@ namespace App\Model;
 
 use App\Model\ClassConexao;
 
-class ClassAdmin extends ClassConexao
+class ClassLogin extends ClassConexao
 {
     private $Db;
 
@@ -67,5 +67,19 @@ class ClassAdmin extends ClassConexao
         $BFetch->bindParam("liberaAdm", $LiberaAdm, \PDO::PARAM_STR);
         $BFetch->bindParam("ativoAdm", $AtivoAdm, \PDO::PARAM_INT);
         $BFetch->execute();
+    }
+
+    #validar o usuário no banco
+    protected function validarUsuario($NomeAdm, $SenhaAdm)
+    {
+        $BFetch = $this->conexaoDB()->prepare("SELECT * FROM tb_adm where NomeAdm=:nomeAdm and senhaAdm=:senhaAdm");
+        $BFetch->bindParam(":nomeAdm", $NomeAdm, \PDO::PARAM_STR);
+        $BFetch->bindParam(":senhaAdm", $SenhaAdm, \PDO::PARAM_STR);
+        $BFetch->execute();
+        if ($Row = $BFetch->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

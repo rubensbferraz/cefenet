@@ -32,7 +32,7 @@ class ClassMenu
                                 <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
                                     <a class='dropdown-item' href=" . DIRPAGE . "palestra>Palestra</a>
                                     <a class='dropdown-item' href='#'>Biblioteca</a>
-                                    <a class='dropdown-item' href=" . DIRPAGE . "admin>Administração</a>
+                                    <a class='dropdown-item' href=" . DIRPAGE . "login>Faça Login</a>
                             </li>
                             <li class='nav-item dropdown'>
                                 <a class='nav-link dropdown-toggle' href='#' id='atividade' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>ATIVIDADE</a>

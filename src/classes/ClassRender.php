@@ -55,38 +55,38 @@ class ClassRender
     #Método responsável por renderizar todo o Layout
     public function renderLayout()
     {
-        include_once(DIRREQ . "app/view/Layout.php");
+        include_once(DIRREQ . "App/view/Layout.php");
     }
 
     #Adiciona caracteristicas especificas no head 
     public function addHead()
     {
         if (file_exists(DIRREQ . "app/view/{$this->getDir()}/Head.php")) {
-            include(DIRREQ . "app/view/{$this->getDir()}/Head.php");
+            include(DIRREQ . "App/view/{$this->getDir()}/Head.php");
         }
     }
 
     #Adiciona caracteristicas especificas no header
     public function addHeader()
     {
-        if (file_exists(DIRREQ . "app/view/{$this->getDir()}/Header.php")) {
-            include(DIRREQ . "app/view/{$this->getDir()}/Header.php");
+        if (file_exists(DIRREQ . "App/view/{$this->getDir()}/Header.php")) {
+            include(DIRREQ . "App/view/{$this->getDir()}/Header.php");
         }
     }
 
     #Adiciona caracteristicas especificas no Main
     public function addMain()
     {
-        if (file_exists(DIRREQ . "app/view/{$this->getDir()}/Main.php")) {
-            include(DIRREQ . "app/view/{$this->getDir()}/Main.php");
+        if (file_exists(DIRREQ . "App/view/{$this->getDir()}/Main.php")) {
+            include(DIRREQ . "App/view/{$this->getDir()}/Main.php");
         }
     }
 
     #Adiciona caracteristicas especificas no Footer
     public function addFooter()
     {
-        if (file_exists(DIRREQ . "app/view/{$this->getDir()}/Footer.php")) {
-            include(DIRREQ . "app/view/{$this->getDir()}/Footer.php");
+        if (file_exists(DIRREQ . "App/view/{$this->getDir()}/Footer.php")) {
+            include(DIRREQ . "App/view/{$this->getDir()}/Footer.php");
         }
     }
 }

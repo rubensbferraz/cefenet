@@ -9,12 +9,12 @@ $BreadCrumb->addBreadcrumb();
     <div class="modalFrm">
         <h3 class="subtitulo">Área segura</h3>
         <button class="fechar" type="submit">X</button>
-        <form class="form-group" method="POST" action="<?php echo DIRPAGE . 'admin/altenticacao' ?>">
+        <form class="form-group" method="POST" action="<?php echo DIRPAGE . 'login/altenticar' ?>">
             <label>Seu Nome:</label>
             <input class="form-control" type="text" class="txt" name="nomeAdm">
             <label>Senha</label>
             <input class="form-control" type="password" class="txt" name="senhaAdm">
-            <button type="submit" id="fechaModal" value="Entrar" class="btn btn-success mt-2" name="logar">Entrar</button>
+            <button type="submit" id="entrar" value="Entrar" class="btn btn-success mt-2" name="logar">Entrar</button>
         </form>
     </div>
 </div>
@@ -26,7 +26,7 @@ $BreadCrumb->addBreadcrumb();
             modalFm.classList.add('mostrar');
             modalFm.addEventListener('click', (e) => {
                 console.log(e.target);
-                if (e.target.id == 'fechaModal' || e.target.className == 'fechar') {
+                if (e.target.id == 'entrar' || e.target.className == 'fechar') {
                     modalFm.classList.remove('mostrar');
                 }
             });
