@@ -16,6 +16,7 @@ $BreadCrumb->addBreadcrumb();
             <input class="form-control" type="password" class="txt" name="senhaAdm">
             <button type="submit" id="entrar" value="Entrar" class="btn btn-success mt-2" name="logar">Entrar</button>
         </form>
+        <a id="esqueci" value="esqueci" class="" name="esqueci" href="#">Esqueci a Senha</a>
     </div>
 </div>
 

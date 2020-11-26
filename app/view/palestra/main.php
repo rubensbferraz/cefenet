@@ -8,7 +8,7 @@
     <form name="FormCadastroPalestra" id="FormCadastroPalestra" class="form-group" action="<?php echo DIRPAGE . 'palestra/cadastrar' ?>" method="POST">
         <div class="row">
 
-            <legend>Ordenando Escala de Palestras Públicas</legend>
+            <legend>Coordenando Escala de Palestras Públicas</legend>
             <div class="col-6">
                 <label for="dataPalestra">Data</label>
                 <input class="form-control" type="date" name="dataPalestra" />

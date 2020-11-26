@@ -21,6 +21,7 @@ class ClassRoutes
             "admin" => "ControllerAdmin",
             "login" => "ControllerLogin",
             "palestra" => "ControllerPalestra",
+            "livraria" => "ControllerLivraria",
             "sitemap" => "ControllerSitemap"
 
         );
